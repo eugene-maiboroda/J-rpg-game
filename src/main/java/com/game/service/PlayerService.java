@@ -1,8 +1,10 @@
 package com.game.service;
 
+import com.game.controller.PlayerInfo;
 import com.game.entity.Player;
 import com.game.entity.Profession;
 import com.game.entity.Race;
+import com.game.mapper.PlayerMapper;
 import com.game.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -20,7 +22,7 @@ import static java.util.Objects.nonNull;
 @Service
 public class PlayerService {
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     @Autowired
     public PlayerService(PlayerRepository playerRepository) {
@@ -47,18 +49,12 @@ public class PlayerService {
                 minExperience, maxExperience, minLevel, maxLevel);
     }
 
-    public Player createPlayer(String name, String title, Race race, Profession profession, long birthday, boolean banned, int experience) {
-        int level = getLevel(experience);
-        int untilNextLevel = getUntilNextLevel(experience, level);
+    public Player createPlayer(PlayerInfo info) {
+        int level = getLevel(info.experience);
+        int untilNextLevel = getUntilNextLevel(info.experience, level);
 
-        Player player = new Player();
-        player.setName(name);
-        player.setTitle(title);
-        player.setRace(race);
-        player.setProfession(profession);
-        player.setBirthday(new Date(birthday));
-        player.setBanned(banned);
-        player.setExperience(experience);
+        Player player = PlayerMapper.fromDto(info);
+
         player.setLevel(level);
         player.setUntilNextLevel(untilNextLevel);
 

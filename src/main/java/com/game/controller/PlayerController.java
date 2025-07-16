@@ -3,6 +3,7 @@ package com.game.controller;
 import com.game.entity.Player;
 import com.game.entity.Profession;
 import com.game.entity.Race;
+import com.game.mapper.PlayerMapper;
 import com.game.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.game.mapper.PlayerMapper.toPlayerInfo;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
@@ -51,7 +53,7 @@ public class PlayerController {
 
         List<Player> players = playerService.getAll(name, title, race, profession, after, before, banned,
                 minExperience, maxExperience, minLevel, maxLevel, order.getFieldName(), pageNumber, pageSize);
-        return players.stream().map(PlayerController::toPlayerInfo).collect(Collectors.toList());
+        return players.stream().map(PlayerMapper::toPlayerInfo).collect(Collectors.toList());
     }
 
     @GetMapping("/count")
@@ -86,8 +88,7 @@ public class PlayerController {
 
         boolean banned = isNull(info.banned) ? false : info.banned;
 
-        Player player = playerService.createPlayer(info.name, info.title, info.race, info.profession,
-                info.birthday, banned, info.experience);
+        Player player = playerService.createPlayer(info);
         return ResponseEntity.status(HttpStatus.OK).body(toPlayerInfo(player));
     }
 
@@ -137,22 +138,5 @@ public class PlayerController {
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(null);
         }
-    }
-
-    private static PlayerInfo toPlayerInfo(Player player) {
-        if (isNull(player)) return null;
-
-        PlayerInfo result = new PlayerInfo();
-        result.id = player.getId();
-        result.name = player.getName();
-        result.title = player.getTitle();
-        result.race = player.getRace();
-        result.profession = player.getProfession();
-        result.birthday = player.getBirthday().getTime();
-        result.banned = player.getBanned();
-        result.experience = player.getExperience();
-        result.level = player.getLevel();
-        result.untilNextLevel = player.getUntilNextLevel();
-        return result;
     }
 }
