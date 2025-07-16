@@ -86,7 +86,11 @@ if (year < 2000 || year > 3000) {
 
 ### How to Run
 
-1. Configure Tomcat 10.1.11+ in IntelliJ IDEA
+1. Clone the repository:
+```bash
+git clone https://github.com/eugene-maiboroda/J-rpg-game.git
+```
+2. Configure Tomcat 10.1.11+ in IntelliJ IDEA
 
    * VM Option: `-Dspring.profiles.active=prod`
    * Artifact: `rpg:war exploded`
