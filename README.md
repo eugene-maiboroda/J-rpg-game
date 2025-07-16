@@ -90,6 +90,8 @@ if (year < 2000 || year > 3000) {
 
    * VM Option: `-Dspring.profiles.active=prod`
    * Artifact: `rpg:war exploded`
+<img width="858" height="745" alt="SCR-20250716-qgzt" src="https://github.com/user-attachments/assets/5ff369e9-46a7-4aaa-8555-f97c7e855ad0" />
+<img width="859" height="754" alt="SCR-20250716-nsjf" src="https://github.com/user-attachments/assets/d1a24995-19ad-4462-8a45-f856be3bd4db" />
 
 2. Launch Tomcat config
 
@@ -133,6 +135,5 @@ You can modify the credentials and JDBC URL to match your local MySQL configurat
 * Enhance DTO validation via annotations
 * Add flexible date handling and error messaging
 
----
 
-> ✅ This project helped reinforce knowledge of Java EE architecture, Spring MVC configuration, JSP handling, and RESTful endpoint integration. It also included practice with raw JDBC, SQL scripting, profile-based configuration, and full-stack deployment.
+This project helped reinforce knowledge of Java EE architecture, Spring MVC configuration, JSP handling, and RESTful endpoint integration. It also included practice with raw JDBC, SQL scripting, profile-based configuration, and full-stack deployment.
