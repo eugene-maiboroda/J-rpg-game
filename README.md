@@ -122,6 +122,7 @@ public DataSource dataSource() {
     return dataSource;
 }
 ```
+<img width="859" height="745" alt="image" src="https://github.com/user-attachments/assets/4bb4594f-42f1-4633-9ff8-fee24c9ea8e5" />
 
 You can modify the credentials and JDBC URL to match your local MySQL configuration.
 
