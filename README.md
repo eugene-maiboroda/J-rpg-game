@@ -1,8 +1,7 @@
 # RPG Web Game
 
-**RPG Web Game** is a pet project web application designed in the RPG style for managing player entities. Built using Java and Spring Framework, the application supports creating, updating, and deleting game objects through a combination of REST endpoints and JSP-based user interfaces. The project is deployed via Tomcat and does not use `web.xml`, relying instead on Java-based Spring configuration.
+**RPG Web Game** is a web application designed in the RPG style for managing player entities. Built using Java and Spring Framework, the application supports creating, updating, and deleting game objects through a combination of REST endpoints and JSP-based user interfaces. The project is deployed via Tomcat and does not use `web.xml`, relying instead on Java-based Spring configuration.
 
----
 
 ### Description
 
@@ -14,7 +13,6 @@ This application allows interaction with game players via both REST API and web 
 * validate user data (including date of birth restrictions),
 * configure and launch the application in different Spring profiles (`prod`, `test`).
 
----
 
 ### Technologies Used
 
@@ -27,7 +25,6 @@ This application allows interaction with game players via both REST API and web 
 * Maven (with `war:exploded` deployment)
 * JDBC & SQL
 
----
 
 ### Configuration Highlights
 
@@ -42,7 +39,6 @@ This application allows interaction with game players via both REST API and web 
   * Context: `/rpg-1.0-SNAPSHOT`
   * Deployment: `war exploded`
 
----
 
 ### REST API
 
@@ -57,7 +53,6 @@ public class PlayerController { ... }
 
 * JSON POST request creates a `Player` using DTO `PlayerInfo`
 
----
 
 ### Validation Rules
 
@@ -69,22 +64,8 @@ if (year < 2000 || year > 3000) {
 }
 ```
 
----
-
-### Static Resources & UI
-
-Static assets are handled via `WebConfig.java`:
-
-```java
-@Override
-public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/**").addResourceLocations("/resources/");
-}
-```
-
 * Important: Correct path (`/resources/`) is necessary for JSP UI to function
 
----
 
 ### Known Issues & Fixes
 
@@ -102,7 +83,6 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 }
 ```
 
----
 
 ### How to Run
 
@@ -115,7 +95,6 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 3. Open browser: [http://localhost:8080/rpg-1.0-SNAPSHOT/](http://localhost:8080/rpg-1.0-SNAPSHOT/)
 
----
 
 ### Database Initialization
 
@@ -146,7 +125,6 @@ You can modify the credentials and JDBC URL to match your local MySQL configurat
 
 🧪 For testing purposes, a separate `TestSQL.sql` file is located in `src/test/resources/`. This script initializes the `test` database and may be used independently from the production `init.sql`.
 
----
 
 ### Planned Improvements
 
